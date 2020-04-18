@@ -11,7 +11,7 @@ module.exports = function(app) {
       });
   });
   app.post("/api/notes", (req, res) => {
-    Dbreader.savenotes()
+    Dbreader.addnote(req.body)
       .then(notes => {
         res.json(notes);
       })
