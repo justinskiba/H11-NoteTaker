@@ -40,18 +40,12 @@ class Dbreader {
       });
   }
   deletenote(id) {
-    console.log(id);
-    return this.getnotes()
-      .then(notes => {
-        console.log(notes);
-        return notes.filter(note => {
-          note.id !== note;
-        });
-      })
-      .then(updatednotes => {
-        console.log(updatednotes);
-        this.write(updatednotes);
+    return this.getnotes().then(notes => {
+      var savedNotes = notes.filter(note => {
+        return note.id !== id;
       });
+      this.write(savedNotes);
+    });
   }
 }
 module.exports = new Dbreader();
